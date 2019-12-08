@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 
-@section('title','- Sitemap')
+@section('pageTitle','- Sitemap')
 
 @section('content')
   <section id="web" class="section-spacer">

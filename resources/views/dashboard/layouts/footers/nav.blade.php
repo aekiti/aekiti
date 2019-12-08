@@ -1,7 +1,7 @@
 <div class="row align-items-center justify-content-lg-between">
   <div class="col-xl-6">
     <div class="copyright text-center text-lg-left text-muted">
-      &copy; {{ now()->year }} <a href="{{ route('terms') }}" class="font-weight-bold ml-1">Terms & Condition</a> &amp; <a href="{{ route('privacy') }}" class="font-weight-bold ml-1">Privacy Policy</a>
+      {{ config('app.nick') }} &copy; {{ now()->year }} <a href="{{ route('terms') }}" class="font-weight-bold ml-1">Terms & Condition</a> &amp; <a href="{{ route('privacy') }}" class="font-weight-bold ml-1">Privacy Policy</a>
     </div>
   </div>
   <div class="col-xl-6">

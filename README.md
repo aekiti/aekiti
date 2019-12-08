@@ -18,7 +18,7 @@ This awesome Laravel Progressive Web App was created for æternity Ekiti as a pr
 
 ## License
 
-```bash
+```md
 Copyright (c) 2019 æternity Ekiti 🔥
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

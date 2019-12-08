@@ -1,7 +1,7 @@
-@if(auth()->check() && !in_array(request()->route()->getName(), ['welcome', 'page.pricing', 'page.lock']))
-    @include('dashboard.layouts.navbars.navs.auth')
-@endif
+@auth
+  @include('dashboard.layouts.navbars.navs.auth')
+@endauth
 
-@if(!auth()->check() || in_array(request()->route()->getName(), ['welcome', 'page.pricing', 'page.lock']))
-    @include('dashboard.layouts.navbars.navs.guest')
-@endif
+@guest
+  @include('dashboard.layouts.navbars.navs.guest')
+@endguest

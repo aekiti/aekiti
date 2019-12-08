@@ -1,5 +1,7 @@
 @extends('web.layouts.app')
 
+@section('pageTitle', '-- ækiti')
+
 @section('content')
   <header id="hero" class="hero">
     <div class="container">
@@ -16,12 +18,16 @@
                 </p>
               </div>
             </div>
-            <a class="hero-button" href="{{ route('register') }}"><i class="fa fa-users"></i> Become a member</a>
+            @if (auth()->check())
+              <a class="hero-button" href=""><i class="fa fa-user"></i> {{ auth()->user()->name }}</a>
+            @else
+              <a class="hero-button" href="{{ route('register') }}"><i class="fa fa-users"></i> Become a member</a>
+            @endif
           </div>
         </div>
         <div class="col-12 col-sm-5 ml-auto ml-pic">
           <div class="hero-figure">
-            <img src="{{ asset('images/web/diversity.png') }}" class="img-fluid w-100" alt="Illustration of diversity in our community">
+            <img src="{{ asset('assets/images/web/diversity.png') }}" class="img-fluid w-100" alt="Illustration of diversity in our community">
           </div>
         </div>
       </div>
@@ -121,7 +127,7 @@
       <div class="row align-items-center">
         <div class="col-sm-6">
           <div class="feature-list-image">
-            <img src="{{ asset('images/web/technologies/smart-contracts.png') }}" class="img-fluid" alt="Smart Contracts">
+            <img src="{{ asset('assets/images/web/technologies/smart-contracts.png') }}" class="img-fluid" alt="Smart Contracts">
           </div>
         </div>
         <div class="col-sm-5 ml-auto">
@@ -148,7 +154,7 @@
         </div>
         <div class="col-sm-6">
           <div class="feature-list-image">
-            <img src="{{ asset('images/web/technologies/state-channels.png') }}" alt="State Channels" class="img-fluid">
+            <img src="{{ asset('assets/images/web/technologies/state-channels.png') }}" alt="State Channels" class="img-fluid">
           </div>
         </div>
       </div>
@@ -159,7 +165,7 @@
       <div class="row align-items-center">
         <div class="col-sm-6">
           <div class="feature-list-image">
-            <img src="{{ asset('images/web/technologies/oracles.png') }}" class="img-fluid" alt="Oracles">
+            <img src="{{ asset('assets/images/web/technologies/oracles.png') }}" class="img-fluid" alt="Oracles">
           </div>
         </div>
         <div class="col-sm-5 ml-auto">
@@ -187,7 +193,7 @@
         </div>
         <div class="col-sm-6">
           <div class="feature-list-image">
-            <img src="{{ asset('images/web/technologies/naming-system.png') }}" class="img-fluid" alt="Naming Systems">
+            <img src="{{ asset('assets/images/web/technologies/naming-system.png') }}" class="img-fluid" alt="Naming Systems">
           </div>
         </div>
       </div>
@@ -218,7 +224,7 @@
             </div> --}}
             <div class="col-md-4 col-12">
               <div class="card event-card">
-                <img class="card-img-top" src="{{ asset('images/web/logo-white.png') }}" width="10%" height="10%" alt="Study Jæm - Ekiti State">
+                <img class="card-img-top" src="{{ asset('assets/images/web/logo-white.png') }}" width="10%" height="10%" alt="Study Jæm - Ekiti State">
                 <div class="card-body">
                   <p class="tagging beginner float-right">Beginner</p>
                   <h5 class="card-title">Study Jæm - Ekiti State</h5>
@@ -242,7 +248,7 @@
             </div>
             <div class="col-md-4 col-12">
               <div class="card event-card">
-                <img class="card-img-top" src="{{ asset('images/web/logo-white.png') }}" width="10%" height="10%" alt="Study Jæm - Ondo State">
+                <img class="card-img-top" src="{{ asset('assets/images/web/logo-white.png') }}" width="10%" height="10%" alt="Study Jæm - Ondo State">
                 <div class="card-body">
                   <p class="tagging beginner float-right">Beginner</p>
                   <h5 class="card-title">Study Jæm - Ondo State</h5>
@@ -266,7 +272,7 @@
             </div>
             <div class="col-md-4 col-12">
               <div class="card event-card">
-                <img class="card-img-top" src="{{ asset('images/web/logo-white.png') }}" width="10%" height="10%" alt="Study Jæm Hackæthon">
+                <img class="card-img-top" src="{{ asset('assets/images/web/logo-white.png') }}" width="10%" height="10%" alt="Study Jæm Hackæthon">
                 <div class="card-body">
                   <p class="tagging expert float-right">jæmers</p>
                   <h5 class="card-title">Study Jæm Hackæthon</h5>
@@ -308,7 +314,7 @@
                       <h6>VENUE : West Region, Nigeria</h6>
                       <p>An outreach program, to promote awareness on the issue of digital asset technology and provide a platform for discussing the crypto asset space.</p>
                     </div>
-                    <a href="#" class="past-event" target="_blank" rel="noopener">EVENT PHOTOS&nbsp;&nbsp;<i class="fa fa-camera"></i></a>
+                    <a href="https://photos.app.goo.gl/4n1vQiuz9d2SdrXEA" class="past-event" target="_blank" rel="noopener">EVENT PHOTOS&nbsp;&nbsp;<i class="fa fa-camera"></i></a>
                   </div>
                 </div>
               </div>
@@ -356,54 +362,16 @@
                 <div class="card hovercard">
                   <div class="cardheader"></div>
                   <div class="avatar">
-                    <img src="{{ asset('images/web/team/moritz.png') }}" alt="mentor avatar">
-                  </div>
-                  <div class="info">
-                    <div class="title">
-                      <h5>Moritz Stellmacher</h5>
-                      <p>Online Facilitator</p>
-                    </div>
-                    <div class="desc">Mobile and Web developer</div>
-                    <div class="desc">Open source enthusiast</div>
-                    <div class="desc">CEO, dacade</div>
-                  </div>
-                  <div class="bottom">
-                    <ul class="social-list__inline mt-10">
-                      <li>
-                        <a href="https://twitter.com/Fransunisoft" target="_blank" rel="noopener">
-                          <i class="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://github.com/Fransunisoft" target="_blank" rel="noopener">
-                          <i class="fab fa-github"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.linkedin.com/in/oluwaseyiayodele" target="_blank" rel="noopener">
-                          <i class="fab fa-linkedin"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item col-md-4 col-15">
-              <div class="card event-card">
-                <div class="card hovercard">
-                  <div class="cardheader"></div>
-                  <div class="avatar">
-                    <img src="{{ asset('images/web/team/emmanueljet.png') }}" alt="lead avatar">
+                    <img src="{{ asset('assets/images/web/team/emmanuel_joseph_jet.png') }}" alt="lead avatar">
                   </div>
                   <div class="info">
                     <div class="title">
                       <h5>Emmanuel Joseph (JET)</h5>
-                      <p>ækiti æmbassador</p>
+                      <p>Lead & æmbassador</p>
                     </div>
-                    <div class="desc">Software, and Blockchain Developer</div>
+                    <div class="desc">Software & Blockchain Developer</div>
                     <div class="desc">Open source enthusiast</div>
-                    <div class="desc">A Software Developer who is in love with Community Building</div>
+                    <div class="desc">Community Mentor</div>
                   </div>
                   <div class="bottom">
                     <ul class="social-list__inline mt-10">
@@ -418,8 +386,8 @@
                         </a>
                       </li>
                       <li>
-                        <a href="https://www.linkedin.com/in/jet774" target="_blank" rel="noopener">
-                          <i class="fab fa-linkedin"></i>
+                        <a href="https://t.me/emmanueljet" target="_blank" rel="noopener">
+                          <i class="fab fa-telegram"></i>
                         </a>
                       </li>
                     </ul>
@@ -432,32 +400,108 @@
                 <div class="card hovercard">
                   <div class="cardheader"></div>
                   <div class="avatar">
-                    <img src="{{ asset('images/web/team/avatar.png') }}" alt="co-organizer avatar">
+                    <img src="{{ asset('assets/images/web/team/jesulonimi_akingbesote.png') }}" alt="co-organizer avatar">
                   </div>
                   <div class="info">
                     <div class="title">
                       <h5>Jesulonimi Akingbesote</h5>
-                      <p>Facilitator</p>
+                      <p>Co-Lead</p>
                     </div>
-                    <div class="desc">Mobile and Web developer</div>
+                    <div class="desc">Android and Web developer</div>
                     <div class="desc">Open source enthusiast</div>
                     <div class="desc">Community mentor</div>
                   </div>
                   <div class="bottom">
                     <ul class="social-list__inline mt-10">
                       <li>
-                        <a href="https://twitter.com/ProfileName" target="_blank" rel="noopener">
+                        <a href="https://twitter.com/AJesulonimi" target="_blank" rel="noopener">
                           <i class="fab fa-twitter"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="https://github.com/ProfileName" target="_blank" rel="noopener">
+                        <a href="https://github.com/Jesulonimi21" target="_blank" rel="noopener">
                           <i class="fab fa-github"></i>
                         </a>
                       </li>
                       <li>
-                        <a href="https://www.linkedin.com/in/ProfileName" target="_blank" rel="noopener">
-                          <i class="fab fa-linkedin"></i>
+                        <a href="https://t.me/jesulonimi" target="_blank" rel="noopener">
+                          <i class="fab fa-telegram"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item col-md-4 col-15">
+              <div class="card event-card">
+                <div class="card hovercard">
+                  <div class="cardheader"></div>
+                  <div class="avatar">
+                    <img src="{{ asset('assets/images/web/team/moritz_stellmacher.png') }}" alt="mentor avatar">
+                  </div>
+                  <div class="info">
+                    <div class="title">
+                      <h5>Moritz Stellmacher</h5>
+                      <p>Online Facilitator</p>
+                    </div>
+                    <div class="desc">Mobile and Web developer</div>
+                    <div class="desc">Open source enthusiast</div>
+                    <div class="desc">CEO, dacade</div>
+                  </div>
+                  <div class="bottom">
+                    <ul class="social-list__inline mt-10">
+                      <li>
+                        <a href="https://twitter.com/moritzfelipe" target="_blank" rel="noopener">
+                          <i class="fab fa-twitter"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://github.com/moritzfelipe" target="_blank" rel="noopener">
+                          <i class="fab fa-github"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://t.me/moritz_felipe" target="_blank" rel="noopener">
+                          <i class="fab fa-telegram"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item col-md-4 col-15">
+              <div class="card event-card">
+                <div class="card hovercard">
+                  <div class="cardheader"></div>
+                  <div class="avatar">
+                    <img src="{{ asset('assets/images/web/team/stephen_sunday.png') }}" alt="mentor avatar">
+                  </div>
+                  <div class="info">
+                    <div class="title">
+                      <h5>Stephen Sunday</h5>
+                      <p>Promoter</p>
+                    </div>
+                    <div class="desc">Blockchain Promoter</div>
+                    <div class="desc">lead æmbassador</div>
+                    <div class="desc">CEO, KusuConsult</div>
+                  </div>
+                  <div class="bottom">
+                    <ul class="social-list__inline mt-10">
+                      <li>
+                        <a href="https://twitter.com/steviekusu" target="_blank" rel="noopener">
+                          <i class="fab fa-twitter"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://github.com/steviekusu" target="_blank" rel="noopener">
+                          <i class="fab fa-github"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://t.me/Kusustevie" target="_blank" rel="noopener">
+                          <i class="fab fa-telegram"></i>
                         </a>
                       </li>
                     </ul>
@@ -521,7 +565,7 @@
         </div>
       </div>
       <div class="mt-40 text-center">
-        <a href="mailto:dsceksu@gmail.com" target="_blank" class="hero-button">Send us an email</a>
+        <a href="mailto:contact@aekiti.com" target="_blank" class="hero-button">Send us an email</a>
       </div>
     </div>
   </section>

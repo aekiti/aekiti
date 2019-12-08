@@ -1,6 +1,6 @@
 @extends('modules.emails.layout.app')
 
-@section('title','- Welcome - {{ $user->name }}')
+@section('pageTitle','- Welcome - {{ $user->name }}')
 
 @section('content')
 <table class="spacer float-center">

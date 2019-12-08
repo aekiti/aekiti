@@ -2,34 +2,35 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   @include('modules.analytics')
+  @laravelPWA
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.nick') }} @yield('title')</title>
+  <title>{{ config('app.nick') }} @yield('pageTitle')</title>
 
   @include('modules.seo')
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
-  <link href="{{ asset('dashboard') }}/assets/nucleo/css/nucleo.css" rel="stylesheet">
-  <link href="{{ asset('dashboard') }}/assets/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="{{ asset('assets/dashboard') }}/plugins/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="{{ asset('assets/dashboard') }}/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 
   @stack('css')
 
   <!-- Argon CSS -->
-  <link type="text/css" href="{{ asset('dashboard') }}/css/argon.css" rel="stylesheet">
+  <link type="text/css" href="{{ asset('assets/dashboard') }}/css/argon.css" rel="stylesheet">
 </head>
 <body class="{{ $class ?? '' }}">
   @auth()
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
       @csrf
     </form>
-    @if (!in_array(request()->route()->getName(), ['welcome', 'page.pricing', 'page.lock']))
-      @include('dashboard.layouts.navbars.sidebar')
-    @endif
+
+    @include('dashboard.layouts.navbars.sidebar')
   @endauth
 
   <div class="main-content">
@@ -37,25 +38,25 @@
     @yield('content')
   </div>
 
-  @if(!auth()->check() || in_array(request()->route()->getName(), ['welcome', 'page.pricing', 'page.lock']))
+  @guest
     @include('dashboard.layouts.footers.guest')
-  @endif
+  @endguest
 
-  <script src="{{ asset('dashboard') }}/assets/jquery/dist/jquery.min.js"></script>
-  <script src="{{ asset('dashboard') }}/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{{ asset('dashboard') }}/assets/js-cookie/js.cookie.js"></script>
-  <script src="{{ asset('dashboard') }}/assets/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="{{ asset('dashboard') }}/assets/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-  <script src="{{ asset('dashboard') }}/assets/lavalamp/js/jquery.lavalamp.min.js"></script>
+  <script src="{{ asset('assets/dashboard') }}/plugins/jquery/dist/jquery.min.js"></script>
+  <script src="{{ asset('assets/dashboard') }}/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('assets/dashboard') }}/plugins/js-cookie/js.cookie.js"></script>
+  <script src="{{ asset('assets/dashboard') }}/plugins/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="{{ asset('assets/dashboard') }}/plugins/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="{{ asset('assets/dashboard') }}/plugins/lavalamp/js/jquery.lavalamp.min.js"></script>
   <!-- Optional JS -->
-  <script src="{{ asset('dashboard') }}/assets/chart.js/dist/Chart.min.js"></script>
-  <script src="{{ asset('dashboard') }}/assets/chart.js/dist/Chart.extension.js"></script>
+  <script src="{{ asset('assets/dashboard') }}/plugins/chart.js/dist/Chart.min.js"></script>
+  <script src="{{ asset('assets/dashboard') }}/plugins/chart.js/dist/Chart.extension.js"></script>
 
   @stack('js')
 
   <!-- dashboard JS -->
-  <script src="{{ asset('dashboard') }}/js/argon.js"></script>
-  <script src="{{ asset('dashboard') }}/js/demo.min.js"></script>
+  <script src="{{ asset('assets/dashboard') }}/js/argon.js"></script>
+  <script src="{{ asset('assets/dashboard') }}/js/demo.min.js"></script>
 
   <script>
     async function share(title, url, text) {

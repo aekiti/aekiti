@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 
-@section('title','- Terms & Condition')
+@section('pageTitle','- Terms & Condition')
 
 @section('content')
   <section id="web" class="section-spacer">

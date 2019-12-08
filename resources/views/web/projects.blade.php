@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 
-@section('title','- Projects')
+@section('pageTitle','- Projects')
 
 @section('content')
   <section id="web" class="section-spacer">
@@ -13,15 +13,15 @@
           <div class="card project-card" >
             <div class="cardheader">
               <div class="img-top" >
-                <img src="{{ asset('images/web/technologies/cloud.png') }}" alt="Card image cap">
+                <img src="{{ asset('assets/images/web/footer-logo.png') }}" alt="Card image cap">
               </div>
               <h5 class="card-title">Project title</h5>
             </div>
             <div class="card-body">
               <div class="project-tag">
-                <p class="tagging stack1 ">HTML</p>
-                <p class="tagging stack2 ">Css</p>
-                <p class="tagging stack3 ">PWA</p>
+                <p class="tagging stack1 ">Sophia</p>
+                <p class="tagging stack2 ">AEProject</p>
+                <p class="tagging stack3 ">AECLI</p>
               </div>
               <p class="card-text">Quick sample text to create the Project title and make up the body of the card's content.<br>Ensure you keep it brief, short and to the point. We don't want to give out too many details, do we?</p>
               <a href="#" class="btn btn-primary float-right">View project</a>
@@ -32,15 +32,15 @@
           <div class="card project-card" >
             <div class="cardheader">
               <div class="img-top" >
-                <img src="{{ asset('images/web/technologies/cloud.png') }}" alt="Card image cap">
+                <img src="{{ asset('assets/images/web/footer-logo.png') }}" alt="Card image cap">
               </div>
               <h5 class="card-title">Project title</h5>
             </div>
             <div class="card-body">
               <div class="project-tag">
-                <p class="tagging stack1 ">HTML</p>
-                <p class="tagging stack2 ">Css</p>
-                <p class="tagging stack3 ">PWA</p>
+                <p class="tagging stack1 ">Sophia</p>
+                <p class="tagging stack2 ">AEProject</p>
+                <p class="tagging stack3 ">AECLI</p>
               </div>
               <p class="card-text">Quick sample text to create the Project title and make up the body of the card's content.<br>Ensure you keep it brief, short and to the point. We don't want to give out too many details, do we?</p>
               <a href="#" class="btn btn-primary float-right">View project</a>
@@ -51,15 +51,15 @@
           <div class="card project-card">
             <div class="cardheader">
               <div class="img-top" >
-                <img src="{{ asset('images/web/technologies/cloud.png') }}" alt="Card image cap">
+                <img src="{{ asset('assets/images/web/footer-logo.png') }}" alt="Card image cap">
               </div>
               <h5 class="card-title">Project title</h5>
             </div>
             <div class="card-body">
               <div class="project-tag">
-                <p class="tagging stack1 ">HTML</p>
-                <p class="tagging stack2 ">Css</p>
-                <p class="tagging stack3 ">PWA</p>
+                <p class="tagging stack1 ">Sophia</p>
+                <p class="tagging stack2 ">AEProject</p>
+                <p class="tagging stack3 ">AECLI</p>
               </div>
               <p class="card-text">Quick sample text to create the Project title and make up the body of the card's content.<br>Ensure you keep it brief, short and to the point. We don't want to give out too many details, do we?</p>
 
