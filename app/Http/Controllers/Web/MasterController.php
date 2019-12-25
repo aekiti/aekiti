@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Workshop;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,9 @@ class MasterController extends Controller
 {
   public function index()
   {
-    return view('web.welcome');
+    $workshops = Workshop::where('status', 1)->take(3)->get();
+
+    return view('web.welcome', compact('workshops'));
   }
 
   public function projects()
@@ -25,5 +28,10 @@ class MasterController extends Controller
   public function privacy()
   {
     return view('web.privacy');
+  }
+
+  public function event()
+  {
+    return view('web.event');
   }
 }

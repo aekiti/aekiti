@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="dns-prefetch" href="https://docs.google.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow" />
   <meta name="google" content="translate" />
@@ -24,6 +25,8 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/pace-theme.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+
+  @yield('css')
 </head>
 <body class="x-hidden has-sticky-header">
   <nav class="navbar navbar-expand-lg fixed-top custom-menu custom-menu__light">
@@ -70,9 +73,9 @@
               </div>
             </div>
           @else
-            <div class="custom-menu__right">
+            {{-- <div class="custom-menu__right">
               <a href="{{ route('register') }}" class="event-btn"><i class="fa fa-users"></i> Become a member</a>
-            </div>
+            </div> --}}
           @endif
         @endif
       </div>
@@ -211,5 +214,7 @@
   <script src="{{ asset('assets/js/plugins/owl.carousel.min.js') }}"></script>
   <script src="{{ asset('assets/js/plugins/hammer.js') }}"></script>
   <script src="{{ asset('assets/js/custom.js') }}"></script>
+
+  @yield('js')
 </body>
 </html>

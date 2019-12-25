@@ -18,6 +18,7 @@ Route::group(['namespace' => 'Web','middleware' => 'web'], function () {
   Route::get('projects', 'MasterController@projects')->name('projects');
   Route::get('terms', 'MasterController@terms')->name('terms');
   Route::get('privacy', 'MasterController@privacy')->name('privacy');
+  Route::get('workshop/{workshop}', 'WorkshopController@show')->name('workshop.show');
 
   Route::get('sitemap', function () {
     SitemapGenerator::create(config('app.url'))->writeToFile('sitemap.xml');

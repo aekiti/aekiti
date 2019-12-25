@@ -21,7 +21,7 @@
             @if (auth()->check())
               <a class="hero-button" href=""><i class="fa fa-user"></i> {{ auth()->user()->name }}</a>
             @else
-              <a class="hero-button" href="{{ route('register') }}"><i class="fa fa-users"></i> Become a member</a>
+              {{-- <a class="hero-button" href=""><i class="fa fa-users"></i> Become a member</a> --}}
             @endif
           </div>
         </div>
@@ -219,58 +219,39 @@
       <div class="tab-content">
         <div class="tab-pane active" id="upcoming" role="tabpanel" aria-labelledby="upcoming">
           <div class="row">
-            {{-- <div class="message-wrapper col-12">
-              <h2 class="message-text">Loading...</h2>
-            </div> --}}
-            <div class="col-md-4 col-12">
-              <div class="card event-card">
-                <img class="card-img-top" src="{{ asset('assets/images/web/logo-white.png') }}" width="10%" height="10%" alt="Study Jæm - Ekiti State">
-                <div class="card-body">
-                  <p class="tagging beginner float-right">Beginner</p>
-                  <h5 class="card-title">Study Jæm - Ekiti State</h5>
-                  <table>
-                    <tr>
-                      <td width="15%" class="text-blue"><i class="far fa-calendar-alt"></i></td>
-                      <td>13<sup>th</sup> January - 27<sup>th</sup> March 2020</td>
-                    </tr>
-                    <tr>
-                      <td class="text-red"><i class="fa fa-map-marker-alt"></i></td>
-                      <td>TechHub EKSU</td>
-                    </tr>
-                    <tr>
-                      <td class="text-green"><i class="far fa-clock"></i></td>
-                      <td>09:00hrs - 12:00hrs(WAT)</td>
-                    </tr>
-                  </table>
-                  <a href="" class="button float-right">Register</a>
-                </div>
+            @if ($workshops->count() == 0)
+              <div class="message-wrapper col-12">
+                <h2 class="message-text">Loading...</h2>
               </div>
-            </div>
-            <div class="col-md-4 col-12">
-              <div class="card event-card">
-                <img class="card-img-top" src="{{ asset('assets/images/web/logo-white.png') }}" width="10%" height="10%" alt="Study Jæm - Ondo State">
-                <div class="card-body">
-                  <p class="tagging beginner float-right">Beginner</p>
-                  <h5 class="card-title">Study Jæm - Ondo State</h5>
-                  <table>
-                    <tr>
-                      <td width="15%" class="text-blue"><i class="far fa-calendar-alt"></i></td>
-                      <td>11<sup>th</sup> May - 31<sup>st</sup> July 2020</td>
-                    </tr>
-                    <tr>
-                      <td class="text-red"><i class="fa fa-map-marker-alt"></i></td>
-                      <td>Premier Hub</td>
-                    </tr>
-                    <tr>
-                      <td class="text-green"><i class="far fa-clock"></i></td>
-                      <td>09:00hrs - 12:00hrs(WAT)</td>
-                    </tr>
-                  </table>
-                  <a href="" class="button float-right">Register</a>
+            @else
+              @foreach ($workshops as $workshop)
+                <div class="col-md-4 col-12">
+                  <div class="card event-card">
+                    <img class="card-img-top" src="{{ asset($workshop->picture) }}" width="10%" height="10%" alt="{{ $workshop->title }}">
+                    <div class="card-body">
+                      <p class="tagging beginner float-right">{{ $workshop->category }}</p>
+                      <h5 class="card-title">{{ $workshop->title }}</h5>
+                      <table>
+                        <tr>
+                          <td width="15%" class="text-blue"><i class="far fa-calendar-alt"></i></td>
+                          <td>{{ $workshop->date }}</td>
+                        </tr>
+                        <tr>
+                          <td class="text-red"><i class="fa fa-map-marker-alt"></i></td>
+                          <td>{{ $workshop->venue }}</td>
+                        </tr>
+                        <tr>
+                          <td class="text-green"><i class="far fa-clock"></i></td>
+                          <td>{{ $workshop->time }}</td>
+                        </tr>
+                      </table>
+                      <a href="{{ route('workshop.show', $workshop->slug) }}" class="button float-right">Register</a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-12">
+              @endforeach
+            @endif
+            {{-- <div class="col-md-4 col-12">
               <div class="card event-card">
                 <img class="card-img-top" src="{{ asset('assets/images/web/logo-white.png') }}" width="10%" height="10%" alt="Study Jæm Hackæthon">
                 <div class="card-body">
@@ -293,7 +274,7 @@
                   <a href="" class="button float-right">Register</a>
                 </div>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
         <div class="tab-pane" id="past" role="tabpanel" aria-labelledby="past">
@@ -541,7 +522,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">How frequently do events and workshops occur?</h5>
-              <p>We hold workshops and showcases at TechHub EKSU & we would recommend you to join our community by becoming a <a href="{{ route('register') }}">member</a> to get updates.</p>
+              <p>We hold workshops and showcases at TechHub EKSU & we would recommend you to join our community by becoming a <a href="">member</a> to get updates.</p>
             </div>
           </div>
         </div>

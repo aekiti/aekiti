@@ -2,8 +2,10 @@
 <link rel="manifest" href="{{ route('laravelpwa.manifest') }}">
 <!-- Chrome for Android theme color -->
 <meta name="theme-color" content="{{ $config['theme_color'] }}">
-<!-- Chrome Icon -->
-<link rel="icon" href="{{ asset('favicon.ico') }}" />
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
 <!-- Add to homescreen for Chrome on Android -->
 <meta name="mobile-web-app-capable" content="{{ $config['display'] == 'standalone' ? 'yes' : 'no' }}">
