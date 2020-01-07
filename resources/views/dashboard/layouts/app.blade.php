@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   @include('modules.analytics')
+  @include('modules.tag_head')
   @laravelPWA
 
   <meta charset="UTF-8">
@@ -25,6 +26,7 @@
   <link type="text/css" href="{{ asset('assets/dashboard') }}/css/argon.css" rel="stylesheet">
 </head>
 <body class="{{ $class ?? '' }}">
+  @include('modules.tag_body')
   @auth()
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
       @csrf

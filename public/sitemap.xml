@@ -1,3 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml-stylesheet type='text/xsl' href='sitemap.xsl'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://aekiti.com/</loc>
+    <changefreq>Monthly</changefreq>
+    <priority>1</priority>
+    <lastmod>2019-12-26T14:02:52Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aekiti.com/learn</loc>
+    <changefreq>Monthly</changefreq>
+    <priority>1</priority>
+    <lastmod>2019-12-26T14:02:52Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aekiti.com/workshop/</loc>
+    <changefreq>Monthly</changefreq>
+    <priority>1</priority>
+    <lastmod>2019-12-26T14:02:52Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aekiti.com/terms</loc>
+    <changefreq>Monthly</changefreq>
+    <priority>1</priority>
+    <lastmod>2019-12-26T14:02:52Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aekiti.com/privacy</loc>
+    <changefreq>Monthly</changefreq>
+    <priority>1</priority>
+    <lastmod>2019-12-26T14:02:52Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aekiti.com/workshop/study-jaem-ekiti-state</loc>
+    <changefreq>Monthly</changefreq>
+    <priority>1</priority>
+    <lastmod>2019-12-26T14:02:52Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aekiti.com/workshop/study-jaem-ondo-state</loc>
+    <changefreq>Monthly</changefreq>
+    <priority>1</priority>
+    <lastmod>2019-12-26T14:02:52Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aekiti.com/workshop/study-jaem-haeckathon</loc>
+    <changefreq>Monthly</changefreq>
+    <priority>1</priority>
+    <lastmod>2019-12-26T14:02:52Z</lastmod>
+  </url>
 </urlset>

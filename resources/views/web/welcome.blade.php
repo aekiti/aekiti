@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 
-@section('pageTitle', '-- ækiti')
+@section('pageTitle', '- ækiti')
 
 @section('content')
   <header id="hero" class="hero">
@@ -18,11 +18,27 @@
                 </p>
               </div>
             </div>
-            @if (auth()->check())
-              <a class="hero-button" href=""><i class="fa fa-user"></i> {{ auth()->user()->name }}</a>
-            @else
-              {{-- <a class="hero-button" href=""><i class="fa fa-users"></i> Become a member</a> --}}
-            @endif
+            <div style="width: auto">
+              <script async src="https://cse.google.com/cse.js?cx=000394442932917914423:qqgxx96kjlt"></script>
+              <style>
+                .gsc-search-box .gsc-input
+                {
+                  border-radius: 40px 0px 0px 40px;
+                }
+                #gsc-i-id1
+                {
+                  color:#1B2733;
+                }
+
+                button.gsc-search-button
+                {
+                  padding:10px !important;
+                  background-color: #f3256a !important;
+                  border-radius: 3px !important;
+                }
+              </style>
+              <div class="gcse-search"></div>
+            </div>
           </div>
         </div>
         <div class="col-12 col-sm-5 ml-auto ml-pic">
@@ -226,55 +242,39 @@
             @else
               @foreach ($workshops as $workshop)
                 <div class="col-md-4 col-12">
-                  <div class="card event-card">
-                    <img class="card-img-top" src="{{ asset($workshop->picture) }}" width="10%" height="10%" alt="{{ $workshop->title }}">
+                  <div itemscope itemtype="http://schema.org/Event" class="card event-card">
+                    <img itemprop="image" class="card-img-top" src="{{ asset($workshop->picture) }}" width="10%" height="10%" alt="{{ $workshop->title }}">
                     <div class="card-body">
-                      <p class="tagging beginner float-right">{{ $workshop->category }}</p>
-                      <h5 class="card-title">{{ $workshop->title }}</h5>
+                      @if ($workshop->category == 'Jæmers')
+                        <p itemprop="identifier" class="tagging expert float-right">Jæmers</p>
+                      @elseif($workshop->category == 'Beginner')
+                        <p itemprop="identifier" class="tagging beginner float-right">Beginner</p>
+                      @else
+                        <p itemprop="identifier" class="tagging intermediate float-right">{{ $workshop->category }}</p>
+                      @endif
+                      <h5 itemprop="name" class="card-title">{{ $workshop->title }}</h5>
                       <table>
                         <tr>
                           <td width="15%" class="text-blue"><i class="far fa-calendar-alt"></i></td>
-                          <td>{{ $workshop->date }}</td>
+                          <td itemprop="startDate">{{ $workshop->date }}</td>
                         </tr>
-                        <tr>
+                        <tr itemprop="location" itemscope itemtype="http://schema.org/Place">
                           <td class="text-red"><i class="fa fa-map-marker-alt"></i></td>
-                          <td>{{ $workshop->venue }}</td>
+                          <td itemprop="name">{{ $workshop->venue }}</td>
                         </tr>
                         <tr>
                           <td class="text-green"><i class="far fa-clock"></i></td>
                           <td>{{ $workshop->time }}</td>
                         </tr>
                       </table>
-                      <a href="{{ route('workshop.show', $workshop->slug) }}" class="button float-right">Register</a>
+                      <a itemprop="url" href="{{ route('workshop.show', $workshop->slug) }}" class="button float-right">Register</a>
+                      <meta itemprop="description" content="Event/Workshop @ ækiti">
+                      <meta itemprop="performer" content="{{ config('app.nick') }}">
                     </div>
                   </div>
                 </div>
               @endforeach
             @endif
-            {{-- <div class="col-md-4 col-12">
-              <div class="card event-card">
-                <img class="card-img-top" src="{{ asset('assets/images/web/logo-white.png') }}" width="10%" height="10%" alt="Study Jæm Hackæthon">
-                <div class="card-body">
-                  <p class="tagging expert float-right">jæmers</p>
-                  <h5 class="card-title">Study Jæm Hackæthon</h5>
-                  <table>
-                    <tr>
-                      <td width="15%" class="text-blue"><i class="far fa-calendar-alt"></i></td>
-                      <td>10<sup>th</sup> - 15<sup>th</sup> August 2020</td>
-                    </tr>
-                    <tr>
-                      <td class="text-red"><i class="fa fa-map-marker-alt"></i></td>
-                      <td>Delight Hotel & Suite</td>
-                    </tr>
-                    <tr>
-                      <td class="text-green"><i class="far fa-clock"></i></td>
-                      <td>09:00hrs - 12:00hrs(WAT)</td>
-                    </tr>
-                  </table>
-                  <a href="" class="button float-right">Register</a>
-                </div>
-              </div>
-            </div> --}}
           </div>
         </div>
         <div class="tab-pane" id="past" role="tabpanel" aria-labelledby="past">

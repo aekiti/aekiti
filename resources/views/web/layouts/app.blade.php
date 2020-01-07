@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" itemscope itemtype="http://schema.org/Organization">
 <head>
   @include('modules.analytics')
+  @include('modules.tag_head')
   @laravelPWA
 
   <meta charset="UTF-8">
@@ -9,8 +10,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="dns-prefetch" href="https://docs.google.com">
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow" />
+  <meta name="robots" content="all">
+  <meta name="googlebot" content="all" />
   <meta name="google" content="translate" />
 
   <title>{{ Request::is('/') ? config('app.name') : config('app.nick') }} @yield('pageTitle')</title>
@@ -29,6 +30,7 @@
   @yield('css')
 </head>
 <body class="x-hidden has-sticky-header">
+  @include('modules.tag_body')
   <nav class="navbar navbar-expand-lg fixed-top custom-menu custom-menu__light">
     <div class="container">
       <a class="navbar-brand" href="{{ route('index') }}">
@@ -51,7 +53,8 @@
           <ul class="navbar-nav ml-lg-auto">
             <li class="nav-item {{ Request::is('/') ? 'active' : '' }}"><a class="nav-link" href="{{ route('index') }}#overview">Overview</a></li>
             <li class="nav-item"><a href="{{ route('index') }}#technologies" class="nav-link">Technologies</a></li>
-            <li class="nav-item {{ Request::is('projects') ? 'active' : '' }}"><a href="{{ route('projects') }}" class="nav-link">Projects</a></li>
+            <li class="nav-item {{ Request::is('learn') ? 'active' : '' }}"><a href="{{ route('learn') }}" class="nav-link">Learn</a></li>
+            {{-- <li class="nav-item {{ Request::is('projects') ? 'active' : '' }}"><a href="{{ route('projects') }}" class="nav-link">Projects</a></li> --}}
             <li class="nav-item"><a href="{{ route('index') }}#workshops" class="nav-link">Workshops</a></li>
             <li class="nav-item"><a href="{{ route('index') }}#team" class="nav-link">Team</a></li>
             <li class="nav-item"><a class="nav-link" href="https://medium.com/@aekiti" target="_blank" rel="follow">Stories</a></li>
@@ -90,7 +93,7 @@
         <div class="col-md-4 col-12">
           <div class="footer-widget first-of-footer-widget">
             <img src="{{ asset('assets/images/web/footer-logo.png') }}" class="mb-10" alt="{{ config('app.name') }}" width="135">
-            <p>{{ config('app.nick') }} &copy; {{ now()->year }} | All Rights Reserved.<br><a href="{{ route('terms') }}">Terms & Condition</a> | <a href="{{ route('privacy') }}">Privacy Policy</a></p>
+            <p>&copy; 2019 - {{ now()->year }} | All Rights Reserved.<br><a href="{{ route('terms') }}">Terms & Condition</a> | <a href="{{ route('privacy') }}">Privacy Policy</a></p>
           </div>
         </div>
         <div class="col-md-8 col-sm-10">
@@ -187,6 +190,7 @@
         DataTransferManager.showShareUI();
 
         return true;
+        $("#share-loader").hide();
       } else if (navigator.share) {
         try {
           await navigator.share({
@@ -196,6 +200,7 @@
           });
 
           return true;
+          $("#share-loader").hide();
         } catch (err) {
           console.error('There was an error trying to share this content');
           return false;
