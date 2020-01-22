@@ -18,13 +18,66 @@
                 </p>
               </div>
             </div>
-            <div style="width: auto">
+            <div style="width:auto;background-color: #FFF;padding: 3px;border: 2px solid #f7296e;border-radius: 4px">
               <script async src="https://cse.google.com/cse.js?cx=000394442932917914423:qqgxx96kjlt"></script>
               <style>
+                .gsc-control-cse
+                {
+                  padding:0px !important;
+                  border-width:0px !important;
+                }
+                form.gsc-search-box,table.gsc-search-box
+                {
+                  margin-bottom:0px !important;
+                }
                 .gsc-search-box .gsc-input
                 {
-                  border-radius: 40px 0px 0px 40px;
+                  padding:0px 4px 0px 6px !important;
                 }
+                #gsc-iw-id1
+                {
+                        height: auto !important;
+                        padding: 0px !important;
+                        border-width: 0px !important;
+                        box-shadow:none !important;
+                }
+                #gs_tti50
+                {
+                  padding:0px !important;
+                }
+                #gsc-i-id1
+                {
+                  height:33px !important;
+                  padding:0px !important;
+                  background:none !important;
+                  text-indent:0px !important;
+                }
+                .gsib_b
+                {
+                  display:none;
+                }
+                button.gsc-search-button
+                {
+                  display:block;
+                  width:13px !important;
+                  height:13px !important;
+                  border-width:0px !important;
+                  margin:0px !important;
+                  padding: 10px 6px 10px 13px !important;
+                  outline:none;
+                  cursor:pointer;
+                  box-shadow:none !important;
+                  box-sizing: content-box !important;
+                }
+                .gsc-branding
+                {
+                  display:none !important;
+                }
+                .gsc-control-cse,#gsc-iw-id1
+                {
+                  background-color:transparent !important;
+                }
+
                 #gsc-i-id1
                 {
                   color:#1B2733;
@@ -33,11 +86,18 @@
                 button.gsc-search-button
                 {
                   padding:10px !important;
-                  background-color: #f3256a !important;
+                  background-color: #f7296e !important;
                   border-radius: 3px !important;
                 }
               </style>
               <div class="gcse-search"></div>
+              <script>
+                window.onload = function() {
+                  var searchBox =  document.getElementById("gsc-i-id1");
+                  searchBox.placeholder="Search the web for æternity or ækiti";
+                  searchBox.title="Search the web for æternity or ækiti";
+                }
+              </script>
             </div>
           </div>
         </div>
