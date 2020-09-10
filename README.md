@@ -1,12 +1,10 @@
-# æternity Ekiti 🔥
+# ækiti æmbassy 🔥
 
 This awesome Laravel Progressive Web App was created for æternity Ekiti as a profile and a platform to showcase what they're upto in events, outreach to local businesses and showcases, maintain their community and most importantly their success stories to the world
 
 ![Badge](https://img.shields.io/badge/Built%20by-Emmanuel%20Joseph%20(JET)-brightgreen.svg)
-![Maintenance](https://img.shields.io/maintenance/yes/2019.svg)
+![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)
 ![Codacy Badge](https://api.codacy.com/project/badge/Grade/b07fd6723d9742d4b6990bbbd688ef85)
-
-[Live Demo](https://aekiti.herokuapp.com)
 
 ## Using GitHub Issues
 
@@ -19,7 +17,7 @@ This awesome Laravel Progressive Web App was created for æternity Ekiti as a pr
 ## License
 
 ```md
-Copyright (c) 2019 æternity Ekiti 🔥
+Copyright (c) 2020 ækiti æmbassy 🔥
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 
-@section('pageTitle', '- Offline')
+@section('pageTitle', 'ækiti - Offline')
 
 @section('content')
   <header id="hero" class="hero">

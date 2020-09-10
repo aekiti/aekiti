@@ -15,14 +15,14 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Model\User::class, function (Faker $faker) {
   return [
     'name' => $faker->name,
     'email' => $faker->unique()->safeEmail,
     'email_verified_at' => now(),
     'password' => Hash::make('password'),
     'remember_token' => Str::random(10),
-    'role_id' => 3,
+    'role_id' => 4,
     'created_at' => now(),
     'updated_at' => now()
   ];

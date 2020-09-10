@@ -1,11 +1,11 @@
 <?php
 
 return [
-  'name' => env('APP_NAME'),
+  'name' => env('APP_NAME', 'ækiti æmbassy'),
   'manifest' => [
-    'name' => env('APP_NAME'),
-    'short_name' => env('APP_NICK'),
-    'description' => 'ækiti is a community of developers, writers, digital designers & entrepreneurs interested in learning about and developing solutions using æternity technologies',
+    'name' => env('APP_NAME', 'ækiti æmbassy'),
+    'short_name' => env('APP_NICK', 'ækiti'),
+    'description' => 'A community of techies utilizing æternity technologies',
     'start_url' => '/',
     'background_color' => '#ffffff',
     'theme_color' => '#f7296e',
@@ -39,7 +39,7 @@ return [
       'tag' => 'emmanueljet',
       'tag1' => 'aeternity',
       'tag2' => 'dacade',
-      'tag3' => 'techhub eksu',
+      'tag3' => 'devstudyjaem',
     ]
   ]
 ];

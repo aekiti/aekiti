@@ -19764,7 +19764,7 @@ textarea[resize='horizontal']
 
     height: 2px;
 
-    background-color: #f7296e;
+    background-color: rgba(0, 0, 0, .6);
 }
 .sidenav-toggler-line:not(:last-child)
 {
@@ -19773,7 +19773,7 @@ textarea[resize='horizontal']
 
 .sidenav-toggler-dark .sidenav-toggler-line
 {
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, .6);
 }
 
 .sidenav-toggler
@@ -21865,7 +21865,7 @@ button.bg-lighter:focus
 
 .bg-gradient-primary
 {
-    background: linear-gradient(87deg, #f3256a 0, #825ee4 100%) !important;
+    background: linear-gradient(87deg, #faa5c1 0, #f7296e 100%) !important;
 }
 
 .bg-gradient-secondary
@@ -22221,7 +22221,7 @@ button.section-darker:focus
 
 .bg-gradient-primary
 {
-    background: linear-gradient(87deg, #f3256a 0, #825ee4 100%) !important;
+    background: linear-gradient(87deg, #faa5c1 0, #f7296e 100%) !important;
 }
 
 .bg-gradient-secondary

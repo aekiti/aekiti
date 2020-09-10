@@ -1,6 +1,8 @@
 @extends('web.layouts.app')
 
-@section('pageTitle', '- ækiti')
+@section('css')
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-NRRT567"></script>
+@endsection
 
 @section('content')
   <header id="hero" class="hero">
@@ -10,7 +12,7 @@
           <div class="hero-content">
             <div class="hero-title__group">
               <div class="hero-title">
-                <h2 class="zuri">{{ config('app.name') }}<br> {{ config('app.nick') }}.</h2>
+                <h2 class="zuri">{{ config('app.name') }}.</h2>
               </div>
               <div class="Hero--Subtitle">
                 <p class="lead">
@@ -36,10 +38,10 @@
                 }
                 #gsc-iw-id1
                 {
-                        height: auto !important;
-                        padding: 0px !important;
-                        border-width: 0px !important;
-                        box-shadow:none !important;
+                  height: auto !important;
+                  padding: 0px !important;
+                  border-width: 0px !important;
+                  box-shadow:none !important;
                 }
                 #gs_tti50
                 {
@@ -89,6 +91,9 @@
                   background-color: #f7296e !important;
                   border-radius: 3px !important;
                 }
+                .gsc-search-button-v2 svg {
+                  fill: #2d1e4f;
+                }
               </style>
               <div class="gcse-search"></div>
               <script>
@@ -101,9 +106,9 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-sm-5 ml-auto ml-pic">
+        <div class="col-12 col-sm-5 ml-auto">
           <div class="hero-figure">
-            <img src="{{ asset('assets/images/web/diversity.png') }}" class="img-fluid w-100" alt="Illustration of diversity in our community">
+            <img src="{{ asset('assets/images/web/diversity.png') }}" class="img-fluid w-100" alt="Illustration of the æmbassies">
           </div>
         </div>
       </div>
@@ -219,7 +224,7 @@
   </section>
   <section class="section-spacer">
     <div class="container">
-      <div class="row flex-column-reverse flex-sm-row align-items-cengit ter">
+      <div class="row flex-column-reverse flex-sm-row align-items-center">
         <div class="col-sm-5 mr-auto">
           <div class="feature-list-wrapper">
             <div class="content-header">
@@ -248,7 +253,7 @@
           <div class="feature-list-wrapper">
             <div class="content-header">
               <h2 class="content-title">Oracles</h2>
-              <p>An oracle connects real-world data with smart contracts. æternity's oracles are truly first-class objects on the blockchain.</p>
+              <p>An oracle connects real-world data with smart contracts. oracles are truly first-class objects on the blockchain.</p>
             </div>
           </div>
         </div>
@@ -258,7 +263,7 @@
 
   <section class="section-spacer">
     <div class="container">
-      <div class="row flex-column-reverse flex-sm-row align-items-cengit ter">
+      <div class="row flex-column-reverse flex-sm-row align-items-center">
         <div class="col-sm-5 mr-auto">
           <div class="feature-list-wrapper">
             <div class="content-header">
@@ -294,262 +299,202 @@
       </div>
       <div class="tab-content">
         <div class="tab-pane active" id="upcoming" role="tabpanel" aria-labelledby="upcoming">
-          <div class="row">
-            @if ($workshops->count() == 0)
-              <div class="message-wrapper col-12">
-                <h2 class="message-text">Loading...</h2>
-              </div>
-            @else
-              @foreach ($workshops as $workshop)
-                <div class="col-md-4 col-12">
-                  <div itemscope itemtype="http://schema.org/Event" class="card event-card">
-                    <img itemprop="image" class="card-img-top" src="{{ asset($workshop->picture) }}" width="10%" height="10%" alt="{{ $workshop->title }}">
-                    <div class="card-body">
-                      @if ($workshop->category == 'Jæmers')
-                        <p itemprop="identifier" class="tagging expert float-right">Jæmers</p>
-                      @elseif($workshop->category == 'Beginner')
-                        <p itemprop="identifier" class="tagging beginner float-right">Beginner</p>
-                      @else
-                        <p itemprop="identifier" class="tagging intermediate float-right">{{ $workshop->category }}</p>
+          <div class="row d-flex justify-content-center" vocab="https://schema.org/" typeof="BreadcrumbList">
+            @forelse ($upcomings as $workshop)
+              <div class="col-md-4 col-12" property="itemListElement" typeof="ListItem">
+                <div class="card event-card">
+                  <div class="card-body">
+                    @foreach ($workshop->tags as $tag)
+                      <p class="tagging float-right" style="background-color:{{ $tag->color }}; color:#fff;">{{ $tag->name }}</p>
+                    @endforeach
+                    <h5 property="name" class="card-title">{{ $workshop->title }}</h5>
+                    <table>
+                      <tr>
+                        <td width="15%" class="text-blue"><i class="far fa-calendar-alt"></i></td>
+                        <td>
+                          @if ($workshop->mode === 'online_multiple' || $workshop->mode === 'offline_multiple')
+                            {{ Carbon\Carbon::parse($workshop->start_date)->format('jS M') }} - {{ Carbon\Carbon::parse($workshop->end_date)->format('jS M, Y') }}
+                          @else
+                            {{ Carbon\Carbon::parse($workshop->start_date)->format('jS F, Y') }}
+                          @endif
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-red"><i class="fa fa-map-marker-alt"></i></td>
+                        <td>{{ $workshop->venue->name }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-green"><i class="far fa-clock"></i></td>
+                        <td>
+                          @if ($workshop->mode === 'online_multiple' || $workshop->mode === 'offline_multiple')
+                            {{ Carbon\Carbon::parse($workshop->start_date)->format('h:iA') }} - {{ Carbon\Carbon::parse($workshop->end_date)->format('h:iA') }} (WAT)
+                          @else
+                            {{ Carbon\Carbon::parse($workshop->start_date)->format('h:iA') }} - {{ Carbon\Carbon::parse($workshop->end_date)->format('h:iA') }} (WAT)
+                          @endif
+                        </td>
+                      </tr>
+                    </table>
+                    <div>
+                      @if ($workshop->status === 'postponed')
+                        <p class="badge badge-primary">Postponed</p>
                       @endif
-                      <h5 itemprop="name" class="card-title">{{ $workshop->title }}</h5>
-                      <table>
-                        <tr>
-                          <td width="15%" class="text-blue"><i class="far fa-calendar-alt"></i></td>
-                          <td itemprop="startDate">{{ $workshop->date }}</td>
-                        </tr>
-                        <tr itemprop="location" itemscope itemtype="http://schema.org/Place">
-                          <td class="text-red"><i class="fa fa-map-marker-alt"></i></td>
-                          <td itemprop="name">{{ $workshop->venue }}</td>
-                        </tr>
-                        <tr>
-                          <td class="text-green"><i class="far fa-clock"></i></td>
-                          <td>{{ $workshop->time }}</td>
-                        </tr>
-                      </table>
-                      <a itemprop="url" href="{{ route('workshop.show', $workshop->slug) }}" class="button float-right">Register</a>
-                      <meta itemprop="description" content="Event/Workshop @ ækiti">
-                      <meta itemprop="performer" content="{{ config('app.nick') }}">
+                      <a property="item" typeof="WebPage" href="{{ route('workshop.show', $workshop) }}" class="button float-right">Learn More</a>
                     </div>
+                    <meta property="description" content="{{ $workshop->excerpt  }}">
+                    <meta property="position" content="{{ $workshop->id }}">
                   </div>
                 </div>
-              @endforeach
-            @endif
+              </div>
+            @empty
+              <div class="message-wrapper col-12">
+                <h2 class="message-text">No Workshop/Event Yet</h2>
+              </div>
+            @endforelse
           </div>
         </div>
         <div class="tab-pane" id="past" role="tabpanel" aria-labelledby="past">
-          <section id="hi" class="section-spacer bg-very__gray">
-            <div class="container">
-              <div class="row align-items-center">
-                <div class="col-sm-6">
-                  <div class="feature-list-image">
-                      <iframe width="500" height="274" data-urllink="https://www.youtube.com/embed/kvcyprm_fzU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                  </div>
-                </div>
-                <div class="col-sm-5 ml-auto">
-                  <div class="feature-list-wrapper">
-                    <div class="content-header">
-                      <h2 class="content-title">Blockchain Road Trip</h2>
-                      <hr>
-                      <h6>DATE : 20<sup>th</sup> - 27<sup>th</sup> September 2019</h6>
-                      <h6>VENUE : West Region, Nigeria</h6>
-                      <p>An outreach program, to promote awareness on the issue of digital asset technology and provide a platform for discussing the crypto asset space.</p>
+          @forelse ($pasts as $item)
+            <section class="my-5 {{ $loop->even ? 'bg-very__gray' : '' }}">
+              <div class="container">
+                <div class="row {{ $loop->even ? 'align-items-center' : 'flex-column-reverse flex-sm-row align-items-center' }}">
+                  @if ($loop->even)
+                    <div class="col-sm-6">
+                      <div class="feature-list-image">
+                        @if ($item->youtube === null)
+                          <iframe data-urllink="{{  $item->slide }}" frameborder="0" width="480" height="299" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                        @else
+                          <iframe width="500" height="274" data-urllink="{{ $item->youtube }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        @endif
+                      </div>
                     </div>
-                    <a href="https://photos.app.goo.gl/4n1vQiuz9d2SdrXEA" class="past-event" target="_blank" rel="noopener">EVENT PHOTOS&nbsp;&nbsp;<i class="fa fa-camera"></i></a>
+                  @endif
+                  <div class="col-sm-5 {{ $loop->even ? 'ml-auto' : 'mr-auto' }}">
+                    <div class="feature-list-wrapper">
+                      <div class="content-header">
+                        <h2 class="content-title"><a href="{{ route('workshop.show', $item) }}">{{ $item->title }}</a></h2>
+                        <hr>
+                        <h6>
+                          DATE :
+                          @if ($item->mode === 'online_multiple' || $item->mode === 'offline_multiple')
+                            {{ Carbon\Carbon::parse($item->start_date)->format('jS M') }} - {{ Carbon\Carbon::parse($item->end_date)->format('jS M, Y') }}
+                          @else
+                            {{ Carbon\Carbon::parse($item->start_date)->format('jS F, Y') }}
+                          @endif</h6>
+                        <h6>VENUE : {{ $item->venue->name }}</h6>
+                        <p>{{ $item->excerpt }}</p>
+                      </div>
+                      @if ($item->photo != null)
+                        <a href="{{ $item->photo }}" class="past-event" target="_blank" rel="noopener">EVENT PHOTOS <i class="fa fa-camera"></i></a>
+                      @elseif($item->photo === null && $item->slide != null)
+                        <a href="{{  $item->slide }}" class="past-event" target="_blank" rel="noopener">EVENT SLIDE <i class="fab fa-slideshare"></i></a>
+                      @else
+                        <a href="{{ route('workshop.show', $item) }}" class="past-event">SEE MORE <i class="fa fa-link"></i></a>
+                      @endif
+                    </div>
                   </div>
+                  @if ($loop->odd)
+                    <div class="col-sm-6">
+                      <div class="feature-list-image">
+                        @if ($item->youtube === null)
+                          <iframe data-urllink="{{  $item->slide }}" frameborder="0" width="480" height="299" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+                        @else
+                          <iframe width="500" height="274" data-urllink="{{ $item->youtube }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        @endif
+                      </div>
+                    </div>
+                  @endif
                 </div>
               </div>
+            </section>
+          @empty
+            <div class="message-wrapper col-12">
+              <h2 class="message-text">No Workshop/Event Yet</h2>
             </div>
-          </section>
-          <section class="section-spacer">
-            <div class="container">
-              <div class="row flex-column-reverse flex-sm-row align-items-cengit ter">
-                <div class="col-sm-5 mr-auto">
-                  <div class="feature-list-wrapper">
-                    <div class="content-header">
-                      <h2 class="content-title">First Virtual Meetup</h2>
-                      <hr>
-                      <h6>DATE : 6<sup>th</sup> July 2019</h6>
-                      <h6>WHERE : Ekiti, Nigeria.</h6>
-                      <p>At this first virtual meetup, we went through Introduction to æternity, Introduction to Smart Contracts and Getting Started with State Channels</p>
-                    </div>
-                    <a href="https://speakerdeck.com/emmanueljet" class="past-event" target="_blank" rel="noopener">EVENT SLIDES&nbsp;&nbsp;<i class="fab fa-slideshare"></i></a>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="feature-list-image">
-                    <iframe width="500" height="274" data-urllink="https://www.youtube.com/embed/fJQb97D3WFY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          @endforelse
         </div>
       </div>
     </div>
   </section>
 
-  <section id="team" class="section-spacer team-section">
+  <section id="stories" class="section-spacer stories-section">
+    <div class="container">
+      <header class="section-header text-center">
+        <h2 class="section-title">Stories</h2>
+        <p class="section-subtitle">Read our amazing stories to learn more about us.</p>
+      </header>
+      <div class="row d-flex justify-content-center" vocab="https://schema.org/" typeof="BreadcrumbList">
+        @forelse ($stories as $story)
+          <div class="col-md-4 col-12" property="itemListElement" typeof="ListItem">
+            <div class="card blog-card">
+              <div class="card-body">
+                <p class="tagging badge-secondary float-right">{{ $story->category->name }}</p>
+                <h5 property="name" class="card-title">{{ $story->title }}</h5>
+                <p property="description" class="card-text">{{ $story->excerpt }}</p>
+                <a property="item" typeof="WebPage" href="{{ route('stories.show', $story) }}" class="button float-right">Read More</a>
+                <meta property="position" content="{{ $story->id }}">
+              </div>
+            </div>
+          </div>
+        @empty
+          <div class="message-wrapper col-12">
+            <h2 class="message-text">No Story Yet</h2>
+          </div>
+        @endforelse
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="section-spacer team-section bg-very__gray">
     <div  class="container">
       <header class="text-center section-header">
-        <h2 class="section-title">Meet ækiti Team</h2>
+        <h2 class="section-title" style="text-transform: lowercase">ækiti Team</h2>
         <p class="section-subtitle">Passionate staff driving the success of the program.</p>
       </header>
       <div class="container-fluid">
         <div id="carouselExample" class="carouselPrograms carousel slide" data-ride="carousel" data-interval="false">
-          <div class="carousel-inner row w-100 mx-auto" role="listbox">
-            <div class="carousel-item col-md-4 col-15 active">
-              <div class="card event-card">
-                <div class="card hovercard">
-                  <div class="cardheader"></div>
-                  <div class="avatar">
-                    <img src="{{ asset('assets/images/web/team/emmanuel_joseph_jet.png') }}" alt="lead avatar">
-                  </div>
-                  <div class="info">
-                    <div class="title">
-                      <h5>Emmanuel Joseph (JET)</h5>
-                      <p>Lead & æmbassador</p>
+          <div class="carousel-inner d-flex justify-content-center row w-100 mx-auto" role="listbox">
+            @foreach ($teams as $team)
+              <div class="carousel-item col-md-4 col-15 {{ $team->id === 1 ? 'active' : '' }}">
+                <div class="card event-card">
+                  <div class="card hovercard">
+                    <div class="cardheader"></div>
+                    <div class="avatar">
+                      <img src="{{ config('app.url') . $team->user->profilePicture() }}" alt="{{ $team->user->name }}">
                     </div>
-                    <div class="desc">Software & Blockchain Developer</div>
-                    <div class="desc">Open source enthusiast</div>
-                    <div class="desc">Community Mentor</div>
-                  </div>
-                  <div class="bottom">
-                    <ul class="social-list__inline mt-10">
-                      <li>
-                        <a href="https://twitter.com/emmanuelJet_" target="_blank" rel="noopener">
-                          <i class="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://github.com/emmanuelJet" target="_blank" rel="noopener">
-                          <i class="fab fa-github"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://t.me/emmanueljet" target="_blank" rel="noopener">
-                          <i class="fab fa-telegram"></i>
-                        </a>
-                      </li>
-                    </ul>
+                    <div class="info">
+                      <div class="title">
+                        <h5>{{ $team->user->name }}</h5>
+                        <p>{{ $team->title }}</p>
+                      </div>
+                      <div class="desc text-center px-4">{{ $team->description }}</div>
+                    </div>
+                    <div class="bottom">
+                      <ul class="social-list__inline mt-10">
+                        <li>
+                          <a href="{{ $team->twitter }}" target="_blank" rel="noopener">
+                            <i class="fab fa-twitter"></i>
+                          </a>
+                        </li>
+                        @if ($team->github !== null)
+                          <li>
+                            <a href="{{ $team->github }}" target="_blank" rel="noopener">
+                              <i class="fab fa-github"></i>
+                            </a>
+                          </li>
+                        @endif
+                        @if ($team->telegram !== null)
+                          <li>
+                            <a href="{{ $team->telegram }}" target="_blank" rel="noopener">
+                              <i class="fab fa-telegram"></i>
+                            </a>
+                          </li>
+                        @endif
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="carousel-item col-md-4 col-15">
-              <div class="card event-card">
-                <div class="card hovercard">
-                  <div class="cardheader"></div>
-                  <div class="avatar">
-                    <img src="{{ asset('assets/images/web/team/jesulonimi_akingbesote.png') }}" alt="co-organizer avatar">
-                  </div>
-                  <div class="info">
-                    <div class="title">
-                      <h5>Jesulonimi Akingbesote</h5>
-                      <p>Co-Lead</p>
-                    </div>
-                    <div class="desc">Android and Web developer</div>
-                    <div class="desc">Open source enthusiast</div>
-                    <div class="desc">Community mentor</div>
-                  </div>
-                  <div class="bottom">
-                    <ul class="social-list__inline mt-10">
-                      <li>
-                        <a href="https://twitter.com/AJesulonimi" target="_blank" rel="noopener">
-                          <i class="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://github.com/Jesulonimi21" target="_blank" rel="noopener">
-                          <i class="fab fa-github"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://t.me/jesulonimi" target="_blank" rel="noopener">
-                          <i class="fab fa-telegram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item col-md-4 col-15">
-              <div class="card event-card">
-                <div class="card hovercard">
-                  <div class="cardheader"></div>
-                  <div class="avatar">
-                    <img src="{{ asset('assets/images/web/team/moritz_stellmacher.png') }}" alt="mentor avatar">
-                  </div>
-                  <div class="info">
-                    <div class="title">
-                      <h5>Moritz Stellmacher</h5>
-                      <p>Online Facilitator</p>
-                    </div>
-                    <div class="desc">Mobile and Web developer</div>
-                    <div class="desc">Open source enthusiast</div>
-                    <div class="desc">CEO, dacade</div>
-                  </div>
-                  <div class="bottom">
-                    <ul class="social-list__inline mt-10">
-                      <li>
-                        <a href="https://twitter.com/moritzfelipe" target="_blank" rel="noopener">
-                          <i class="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://github.com/moritzfelipe" target="_blank" rel="noopener">
-                          <i class="fab fa-github"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://t.me/moritz_felipe" target="_blank" rel="noopener">
-                          <i class="fab fa-telegram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item col-md-4 col-15">
-              <div class="card event-card">
-                <div class="card hovercard">
-                  <div class="cardheader"></div>
-                  <div class="avatar">
-                    <img src="{{ asset('assets/images/web/team/stephen_sunday.png') }}" alt="mentor avatar">
-                  </div>
-                  <div class="info">
-                    <div class="title">
-                      <h5>Stephen Sunday</h5>
-                      <p>Promoter</p>
-                    </div>
-                    <div class="desc">Blockchain Promoter</div>
-                    <div class="desc">lead æmbassador</div>
-                    <div class="desc">CEO, KusuConsult</div>
-                  </div>
-                  <div class="bottom">
-                    <ul class="social-list__inline mt-10">
-                      <li>
-                        <a href="https://twitter.com/steviekusu" target="_blank" rel="noopener">
-                          <i class="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://github.com/steviekusu" target="_blank" rel="noopener">
-                          <i class="fab fa-github"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://t.me/Kusustevie" target="_blank" rel="noopener">
-                          <i class="fab fa-telegram"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
           <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev" style="cursor:default;">
             <span class="carousel-control-prev-i fa fa-angle-left" aria-hidden="true" style="cursor:pointer;"></span>
@@ -564,43 +509,51 @@
     </div>
   </section>
 
-  <section id="faqs" class="section-spacer section-faq">
+  <section itemscope itemtype="https://schema.org/FAQPage" id="faqs" class="section-spacer section-faq">
     <div class="container">
       <header class="section-header text-center">
         <h2 class="section-title">Frequently Asked Questions</h2>
       </header>
       <div class="row">
         <div class="col-sm-6">
-          <div class="card">
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="card">
             <div class="card-body">
-              <h5 class="card-title">Who can become a member?</h5>
-              <p>The community is open to any writer, digital designer, entrepreneurs, and developer who want to further their skills.</p>
+              <h5 itemprop="name" class="card-title">Who can become a member?</h5>
+              <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">The community is open to any writer, digital designer, entrepreneurs, and developer who want to further their skills.</p>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="card">
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="card">
             <div class="card-body">
-              <h5 class="card-title">How frequently do events and workshops occur?</h5>
-              <p>We hold workshops and showcases at TechHub EKSU & we would recommend you to join our community by becoming a <a href="">member</a> to get updates.</p>
+              <h5 itemprop="name" class="card-title">How frequently do events and workshops occur?</h5>
+              <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">We hold workshops and showcases at TechHub EKSU & we would recommend you to join our community by becoming a <a href="{{ route('register') }}">member</a> to get updates.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6">
-          <div class="card">
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="card">
             <div class="card-body">
-              <h5 class="card-title">What should I carry when attending a workshop?</h5>
-              <p>We recommend you carry with you a notebook, pen and a laptop because more often than not we make our hands dirty with code. Most importantly, carry along a healthy dose of curiosity and enthusiasm.</p>
+              <h5 itemprop="name" class="card-title">What should I carry when attending a workshop?</h5>
+              <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">We recommend you carry with you a notebook, pen and a laptop because more often than not we make our hands dirty with code. Most importantly, carry along a healthy dose of curiosity and enthusiasm.</p>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="card">
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="card">
             <div class="card-body">
-              <h5 class="card-title">Who should I reach out to if I have any questions?</h5>
-              <p>If you have any questions or comments, please don't hesitate to contact us by clicking the button below. We would be happy to stay engaged via email even after the event</p>
+              <h5 itemprop="name" class="card-title">Who should I reach out to if I have any questions?</h5>
+              <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text">If you have any questions or comments, please don't hesitate to contact us by clicking the button below. We would be happy to stay engaged via <a href="mailto:jet@aekiti.com" target="_blank">email</a> even after the event</p>
+              </div>
             </div>
           </div>
         </div>

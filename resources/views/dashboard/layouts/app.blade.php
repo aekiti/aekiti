@@ -2,7 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   @include('modules.analytics')
-  @include('modules.tag_head')
   @laravelPWA
 
   <meta charset="UTF-8">
@@ -10,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.nick') }} @yield('pageTitle')</title>
+  <title>@yield('pageTitle', config('app.name'))</title>
 
   @include('modules.seo')
 
@@ -18,15 +17,15 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
   <link href="{{ asset('assets/dashboard') }}/plugins/nucleo/css/nucleo.css" rel="stylesheet">
-  <link href="{{ asset('assets/dashboard') }}/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="{{ asset('assets/dashboard') }}/plugins/@fontawesome/css/all.min.css" rel="stylesheet">
 
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/pace.css') }}">
   @stack('css')
 
   <!-- Argon CSS -->
   <link type="text/css" href="{{ asset('assets/dashboard') }}/css/argon.css" rel="stylesheet">
 </head>
 <body class="{{ $class ?? '' }}">
-  @include('modules.tag_body')
   @auth()
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
       @csrf
@@ -44,6 +43,7 @@
     @include('dashboard.layouts.footers.guest')
   @endguest
 
+  <script src="{{ asset('assets/js/plugins/pace.js') }}"></script>
   <script src="{{ asset('assets/dashboard') }}/plugins/jquery/dist/jquery.min.js"></script>
   <script src="{{ asset('assets/dashboard') }}/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="{{ asset('assets/dashboard') }}/plugins/js-cookie/js.cookie.js"></script>

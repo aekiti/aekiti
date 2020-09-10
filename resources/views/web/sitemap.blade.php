@@ -1,9 +1,9 @@
 @extends('web.layouts.app')
 
-@section('pageTitle','- Sitemap')
+@section('pageTitle','ækiti - Sitemap')
 
 @section('content')
-  <section id="web" class="section-spacer">
+  <section class="mx-4">
     <header class="section-header text-center">
       <h2 class="section-title">Sitemap</h2>
     </header>

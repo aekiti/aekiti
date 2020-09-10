@@ -2,30 +2,39 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Workshop;
-use App\Course;
+use App\Model\Team;
+use App\Model\Story;
+use App\Model\Project;
+use App\Model\Workshop;
+use App\Model\Learn\Track;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class MasterController extends Controller
 {
   public function index()
   {
-    $workshops = Workshop::where('status', 1)->take(3)->get();
+    $upcomings = Workshop::with('tags')->whereIn('status', ['ongoing', 'postponed'])->orderBy('start_date', 'asc')->take(3)->get();
+    $pasts = Workshop::with('tags')->where('status', 'past')->orderByDesc('start_date')->get();
+    $stories = Story::where('status', 'publish')->with('category')->orderByDesc('published_date')->take(3)->get();
+    $teams = Team::with('user')->get();
 
-    return view('web.welcome', compact('workshops'));
+    return view('web.welcome', compact(['upcomings','pasts','stories','teams']));
   }
 
   public function projects()
   {
-    return view('web.projects');
+    $aekitis = Project::with('tags')->where('show_on_homepage', 1)->where('category_id', 2)->orderByDesc('date')->get();
+    $jaemers = Project::with('tags')->where('show_on_homepage', 1)->where('category_id', 3)->get();
+    $others = Project::with('tags')->where('show_on_homepage', 1)->where('category_id', 4)->orderByDesc('date')->get();
+
+    return view('web.projects', compact(['aekitis', 'jaemers', 'others']));
   }
 
-  public function learn()
+  public function course()
   {
-    $courses = Course::all();
+    $tracks = Track::with('tags')->get();
 
-    return view('web.learn', compact('courses'));
+    return view('web.course', compact(['tracks']));
   }
 
   public function terms()
@@ -36,10 +45,5 @@ class MasterController extends Controller
   public function privacy()
   {
     return view('web.privacy');
-  }
-
-  public function event()
-  {
-    return view('web.event');
   }
 }

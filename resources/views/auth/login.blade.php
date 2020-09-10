@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app', ['class' => 'bg-secondary'])
 
-@section('pageTitle','- Login')
+@section('pageTitle','ækiti - Login')
 
 @section('content')
   @include('dashboard.layouts.headers.guest', ['infoLogin' => 1])
@@ -10,13 +10,13 @@
       <div class="col-lg-5 col-md-7">
         <div class="card bg-secondary shadow border-0">
           <div class="card-header bg-transparent pb-5">
-            <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in with') }}</small></div>
+            <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Continue with') }}</small></div>
             <div class="btn-wrapper text-center">
-              <a href="#" class="btn btn-neutral btn-icon">
+              <a href="{{ url('auth/github') }}" class="btn btn-neutral btn-icon">
                 <span class="btn-inner--icon"><img src="{{ asset('assets/svg/github.svg') }}"></span>
                 <span class="btn-inner--text">{{ __('Github') }}</span>
               </a>
-              <a href="#" class="btn btn-neutral btn-icon">
+              <a href="{{ url('auth/google') }}" class="btn btn-neutral btn-icon">
                 <span class="btn-inner--icon"><img src="{{ asset('assets/svg/google.svg') }}"></span>
                 <span class="btn-inner--text">{{ __('Google') }}</span>
               </a>

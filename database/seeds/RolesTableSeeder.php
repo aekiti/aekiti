@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class RolesTableSeeder extends Seeder
@@ -13,8 +14,8 @@ class RolesTableSeeder extends Seeder
   {
     DB::table('roles')->insert([
       'id' => 1,
-      'name' => 'Admin',
-      'description' => 'This is the administration role',
+      'name' => 'Lead',
+      'description' => 'This is the lead role',
       'created_at' => now(),
       'updated_at' => now()
     ]);
@@ -29,6 +30,14 @@ class RolesTableSeeder extends Seeder
 
     DB::table('roles')->insert([
       'id' => 3,
+      'name' => 'Creator',
+      'description' => 'This is the creator role',
+      'created_at' => now(),
+      'updated_at' => now()
+    ]);
+
+    DB::table('roles')->insert([
+      'id' => 4,
       'name' => 'Member',
       'description' => 'This is the member role',
       'created_at' => now(),

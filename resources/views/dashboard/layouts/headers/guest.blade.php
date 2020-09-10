@@ -3,8 +3,8 @@
     <div class="header-body text-center mb-7">
       <div class="row justify-content-center">
         <div class="col-lg-8 col-md-9">
-          <h1 class="text-white">{{ __('Welcome to æternity Ekiti.') }}</h1>
-          <h2 class="text-white">{{ __('Kickstart your ækiti journey like a PRO') }}</h2>
+          <h1 class="text-white">{{ __('Welcome to ækiti æmbassy.') }}</h1>
+          <h2 class="text-white">{{ __('Startoff your æternity blockchain development journey like a PRO') }}</h2>
 
           <p class="text-lead text-light mt-3 mb-0">
             @include('alerts.migrations_check')

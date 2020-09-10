@@ -1,31 +1,21 @@
-vendor/
-packages/
-node_modules/
+/node_modules
+/public/hot
+/public/storage
+/public/google50def386900a7187.html
+/storage/*.key
+/vendor
+/packages
+/keep
+
+.history/
+.phpintel/
+
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
-storage/*.key
-.env.*.php
-.env.php
-.env.backup
-.env
-.history/
-.phpintel/
-.phpunit.result.cache
-Homestead.yaml
-Homestead.json
-
-# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
-.rocketeer/
-
-# Other
-keep.md
 *.orig
-.vscode/

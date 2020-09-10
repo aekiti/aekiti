@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app', ['class' => 'bg-secondary'])
 
-@section('pageTitle','- Reset Password')
+@section('pageTitle','ækiti - Reset Password')
 
 @section('content')
   @include('dashboard.layouts.headers.guest')

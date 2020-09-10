@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -11,25 +12,48 @@ class UsersTableSeeder extends Seeder
    */
   public function run()
   {
-    factory(App\User::class)->create([
+    User::create([
       'id' => 1,
-      'name' => 'Admin',
+      'name' => 'Emmanuel Joseph(JET)',
       'email' => 'jet@aekiti.com',
       'role_id' => 1,
+      'email_verified_at' => now(),
+      'password' => bcrypt('password'),
+      'created_at' => now(),
+      'updated_at' => now()
     ]);
 
-    factory(App\User::class)->create([
+    User::create([
       'id' => 2,
-      'name' => 'Facilitator',
-      'email' => 'facilitator@aekiti.com',
+      'name' => 'Jesulonimi Akingbesote',
+      'email' => 'lonimi@aekiti.com',
       'role_id' => 2,
+      'email_verified_at' => now(),
+      'password' => bcrypt('password'),
+      'created_at' => now(),
+      'updated_at' => now()
     ]);
 
-    factory(App\User::class)->create([
-      'id' => 3,
-      'name' => 'Member',
-      'email' => 'member@aekiti.com',
-      'role_id' => 3,
-    ]);
+    // User::create([
+    //   'id' => 3,
+    //   'name' => 'Creator',
+    //   'email' => 'creator@aekiti.com',
+    //   'role_id' => 3,
+    //   'email_verified_at' => now(),
+    //   'password' => bcrypt('password'),
+    //   'created_at' => now(),
+    //   'updated_at' => now()
+    // ]);
+
+    // User::create([
+    //   'id' => 4,
+    //   'name' => 'Member',
+    //   'email' => 'member@aekiti.com',
+    //   'role_id' => 4,
+    //   'email_verified_at' => now(),
+    //   'password' => bcrypt('password'),
+    //   'created_at' => now(),
+    //   'updated_at' => now()
+    // ]);
   }
 }

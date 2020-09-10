@@ -1,36 +1,30 @@
-<meta name="author" content="Emmanuel Joseph(JET)"/>
-<meta name="title" content="{{ Request::is('/') ? config('app.name') : config('app.nick') }} @yield('pageTitle')">
-<meta name="keywords" content="aekiti, aternity ekiti, {{ config('app.name') }}, {{ config('app.nick') }}, aeternity developers, aekiti developers, ækiti developers, devstudyjæm, devstudyjam, developer study jæm, developer study jam, ekiti state, ekiti, ondo, ondo state, techhub eksu, techhub, students, technology, nigeria, emmanueljet, emmanuel joseph, jet, emmanuel joseph(jet), #devstudyjaem"/>
-<meta name="description" content="ækiti is a community of designers, writers, entrepreneurs, and techies coming together under the umbrella of developing and providing awesome solutions using æternity technologies">
-
-<!-- Google -->
 <meta name="google-site-verification" content="8GzDQXvdjjclPdOuclBYeUykFzK04HLaGpu_MFQyFXI" />
-<link itemprop="url" rel="canonical" href="{{ url()->current() }}" />
-<meta itemprop="name" content="{{ Request::is('/') ? config('app.name') : config('app.nick') }} @yield('pageTitle')">
-<meta itemprop="description" content="ækiti is a community of designers, writers, entrepreneurs, and techies coming together under the umbrella of developing and providing awesome solutions using æternity technologies">
-<meta itemprop="image" content="{{ config('app.url') }}/assets/images/web/logo-white.png">
+<meta name="author" content="Emmanuel Joseph(JET)"/>
+<meta name="publicKey" content="ak_2vJ9zrUWCsZNVd2Q6cYxhmBoEZ1ewTSAhoQ81L9pnTyh2tJBeJ">
+<meta name="aens" content="aeternityekiti.chain">
+<meta name="title" content="@yield('pageTitle', config('app.name'))">
+<meta name="keywords" content="aekiti, aternity ekiti, {{ config('app.name') }}, {{ config('app.nick') }}, aeternity developers, aekiti developers, ækiti developers, devstudyjæm, devstudyjam, developer study jæm, developer study jam, ekiti state, ekiti, ondo, ondo state, techhub eksu, techhub, students, technology, nigeria, emmanueljet, emmanuel joseph, jet, emmanuel joseph(jet), jesulonimi akingbesote, #devstudyjaem"/>
+<meta name="description" content="@yield('pageDescription', 'A community of techies utilizing æternity technologies')">
+<link rel="canonical" href="{{ config('app.url') }}" />
+
+@include('modules.schema')
 
 <!-- Facebook -->
+<meta property="fb:page_id" content="370238310268309" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ url()->current() }}" />
-<meta property="og:title" content="{{ Request::is('/') ? config('app.name') : config('app.nick') }} @yield('pageTitle')" />
-<meta property="og:description" content="ækiti is a community of designers, writers, entrepreneurs, and techies coming together under the umbrella of developing and providing awesome solutions using æternity technologies" />
-<meta property="og:image" content="{{ config('app.url') }}/assets/images/web/logo-white.png" />
+<meta property="og:title" content="@yield('pageTitle', config('app.name'))" />
+<meta property="og:description" content="@yield('pageDescription', 'A community of techies utilizing æternity technologies')" />
+<meta property="og:image" content="@yield('pageImage', config('app.url').'/assets/images/icons/icon-512x512.png')" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:alt" content="{{ config('app.nick') }}" />
-<meta property="og:image:width" content="279">
-<meta property="og:image:height" content="279">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="{{ url()->current() }}">
-<meta name="twitter:site" content="@aeternityekiti">
+<meta name="twitter:site" content="@AeternityEkiti">
 <meta name="twitter:creator" content="@emmanuelJet_">
-<meta name="twitter:title" content="{{ Request::is('/') ? config('app.name') : config('app.nick') }} @yield('pageTitle')">
-<meta name="twitter:description" content="ækiti is a community of designers, writers, entrepreneurs, and techies coming together under the umbrella of developing and providing awesome solutions using æternity technologies">
-<meta name="twitter:image:src" content="{{ config('app.url') }}/assets/images/web/logo-white.png">
+<meta name="twitter:title" content="@yield('pageTitle', config('app.name'))">
+<meta name="twitter:description" content="@yield('pageDescription', 'A community of techies utilizing æternity technologies')">
+<meta name="twitter:image:src" content="@yield('pageImage', config('app.url').'/assets/images/icons/icon-512x512.png')">
 <meta name="twitter:image:alt" content="{{ config('app.nick') }}">
-<meta property="twitter:image:width" content="279">
-<meta property="twitter:image:height" content="279">
-
-@include('modules.schema')

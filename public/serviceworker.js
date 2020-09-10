@@ -1,11 +1,13 @@
-var staticCacheName = "pwa-v" + new Date().getTime();
+var staticCacheName = "aekiti-v" + new Date().getTime();
 var filesToCache = [
   '/offline',
+  'assets/css/plugins/pace.css',
   '/assets/css/styles.css',
   '/assets/css/responsive.css',
   '/assets/css/plugins/bootstrap.min.css',
-  '/assets/dashboard/plugins/@fortawesome/fontawesome-free/css/all.min.css',
+  '/assets/dashboard/plugins/@fontawesome/css/all.min.css',
   '/assets/css/plugins/owl.carousel.min.css',
+  'assets/js/plugins/pace.js',
   '/assets/js/custom.js',
   '/assets/js/plugins/bootstrap.bundle.min.js',
   '/assets/js/plugins/jquery.easing.min.js',
@@ -13,8 +15,8 @@ var filesToCache = [
   '/assets/js/plugins/jquery.min.js',
   '/assets/js/plugins/owl.carousel.min.js',
   '/assets/js/plugins/swiper.min.js',
-  '/assets/images/web/logo-white.png',
-  '/assets/images/web/footer-logo.png',
+  '/assets/images/web/brand/logo_text.png',
+  '/assets/images/web/brand/logo.png',
   '/assets/images/web/diversity.png',
   '/assets/images/web/technologies/smart-contracts.png',
   '/assets/images/web/technologies/state-channels.png',
@@ -33,6 +35,18 @@ var filesToCache = [
   '/assets/images/icons/icon-192x192.png',
   '/assets/images/icons/icon-384x384.png',
   '/assets/images/icons/icon-512x512.png',
+  '/assets/images/icons/splash-640x1136.png',
+  '/assets/images/icons/splash-750x1334.png',
+  '/assets/images/icons/splash-828x1792.png',
+  '/assets/images/icons/splash-1125x2436.png',
+  '/assets/images/icons/splash-1242x2208.png',
+  '/assets/images/icons/splash-1242x2688.png',
+  '/assets/images/icons/splash-1536x2048.png',
+  '/assets/images/icons/splash-1668x2224.png',
+  '/assets/images/icons/splash-1668x2388.png',
+  '/assets/images/icons/splash-2048x2732.png',
+  'https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css',
+  'https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js',
 ];
 
 // Cache on install
@@ -52,7 +66,7 @@ self.addEventListener('activate', event => {
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames
-        .filter(cacheName => (cacheName.startsWith("pwa-")))
+        .filter(cacheName => (cacheName.startsWith("aekiti-")))
         .filter(cacheName => (cacheName !== staticCacheName))
         .map(cacheName => caches.delete(cacheName))
       );

@@ -41,9 +41,42 @@
     }).then(function (registration) {
       // Registration was successful
       console.log('ækiti: serviceWorker registration successful with scope: ', registration.scope);
+
+      // Update cache files
+      if(registration.active) {
+        registration.addEventListener('updatefound', () => {
+          const installingWorker = registration.installing;
+
+          installingWorker.addEventListener('statechange', () => {
+            if(installingWorker.state === 'installed') {
+              console.log('ækiti: Update Available. Triggering update prompt.');
+              onUpdateFound();
+            }
+          });
+        });
+      }
     }, function (err) {
       // registration failed :(
       console.log('ækiti: serviceWorker registration failed: ', err);
+    });
+  }
+
+  function onUpdateFound() {
+    $.confirm({
+      title: 'Update Available!',
+      content: 'A new update is ready. Do you want to update now?',
+      buttons: {
+        confirm: {
+          text: 'Update',
+          btnClass: 'button',
+          action: function(){
+            location.reload();
+          }
+        },
+        cancel: function () {
+          true
+        },
+      }
     });
   }
 </script>
