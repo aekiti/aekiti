@@ -3,7 +3,7 @@
 This awesome Laravel Progressive Web App was created for æternity Ekiti as a profile and a platform to showcase what they're upto in events, outreach to local businesses and showcases, maintain their community and most importantly their success stories to the world
 
 [![Badge](https://img.shields.io/badge/Built%20by-Emmanuel%20Joseph%20(JET)-brightgreen.svg)](https://emmanueljet.github.io/emmanueljet)
-[![Build Status](https://travis-ci.org/your/repo.svg?branch=master)](https://travis-ci.org/your/repo)
+[![Build Status](https://travis-ci.com/aekiti/aekiti.svg?branch=master)](https://travis-ci.com/aekiti/aekiti)
 ![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![Codacy Badge](https://api.codacy.com/project/badge/Grade/b07fd6723d9742d4b6990bbbd688ef85)
